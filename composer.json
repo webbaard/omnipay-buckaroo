@@ -1,5 +1,5 @@
 {
-    "name": "omnipay/buckaroo",
+    "name": "born05/omnipay-buckaroo",
     "type": "library",
     "description": "Buckaroo driver for the Omnipay payment processing library",
     "keywords": [
@@ -35,12 +35,5 @@
     "require-dev": {
         "omnipay/tests": "~3.0",
         "squizlabs/php_codesniffer": "^2.8.1"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "3.0.x-dev"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
