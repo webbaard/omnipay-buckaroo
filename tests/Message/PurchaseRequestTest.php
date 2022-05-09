@@ -11,22 +11,20 @@ class PurchaseRequestTest extends TestCase
      */
     protected $request;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $this->request->initialize(
-            array(
-                'websiteKey' => 'web',
-                'secretKey' => 'secret',
-                'amount' => '12.00',
-                'returnUrl' => 'https://www.example.com/return',
-            )
-        );
+        $this->request->initialize([
+            'websiteKey' => 'web',
+            'secretKey' => 'secret',
+            'amount' => '12.00',
+            'returnUrl' => 'https://www.example.com/return',
+        ]);
     }
 
     public function testGetData()
     {
-        $this->request->initialize(array(
+        $this->request->initialize([
             'websiteKey' => 'web',
             'secretKey' => 'secret',
             'amount' => '12.00',
@@ -38,7 +36,7 @@ class PurchaseRequestTest extends TestCase
             'culture' => 'nl-NL',
             'paymentMethod' => 'mastercard',
             'issuer' => 'RABONL2U',
-        ));
+        ]);
 
         $data = $this->request->getData();
 

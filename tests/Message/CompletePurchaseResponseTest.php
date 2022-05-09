@@ -8,12 +8,12 @@ class CompletePurchaseResponseTest extends TestCase
 {
     public function testSuccess()
     {
-        $data = array(
+        $data = [
             'BRQ_STATUSCODE' => '190',
             'BRQ_STATUSMESSAGE' => 'hi!',
             'BRQ_PAYMENT' => '5',
             'BRQ_INVOICENUMBER' => 'website-reference',
-        );
+        ];
 
         $response = new CompletePurchaseResponse($this->getMockRequest(), $data);
 
@@ -26,7 +26,7 @@ class CompletePurchaseResponseTest extends TestCase
 
     public function testEmpty()
     {
-        $response = new CompletePurchaseResponse($this->getMockRequest(), array());
+        $response = new CompletePurchaseResponse($this->getMockRequest(), []);
 
         $this->assertFalse($response->isSuccessful());
         $this->assertNull($response->getCode());

@@ -6,17 +6,15 @@ use Omnipay\Tests\TestCase;
 
 class SepaDirectDebitPurchaseRequestTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new SepaDirectDebitPurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $this->request->initialize(
-            array(
-                'websiteKey' => 'web',
-                'secretKey' => 'secret',
-                'amount' => '12.00',
-                'returnUrl' => 'https://www.example.com/return',
-            )
-        );
+        $this->request->initialize([
+            'websiteKey' => 'web',
+            'secretKey' => 'secret',
+            'amount' => '12.00',
+            'returnUrl' => 'https://www.example.com/return',
+        ]);
     }
 
     public function testGetData()

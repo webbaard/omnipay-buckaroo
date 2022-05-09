@@ -7,7 +7,7 @@ use Omnipay\Common\AbstractGateway;
 /**
  * Buckaroo Credit Card Gateway
  */
-class BuckarooGateway extends AbstractGateway
+abstract class BuckarooGateway extends AbstractGateway
 {
     public function getName()
     {
@@ -16,11 +16,11 @@ class BuckarooGateway extends AbstractGateway
 
     public function getDefaultParameters()
     {
-        return array(
+        return [
             'websiteKey' => '',
             'secretKey' => '',
             'testMode' => false,
-        );
+        ];
     }
 
     public function getWebsiteKey()
@@ -43,12 +43,12 @@ class BuckarooGateway extends AbstractGateway
         return $this->setParameter('secretKey', $value);
     }
 
-    public function purchase(array $parameters = array())
+    public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\Buckaroo\Message\PurchaseRequest', $parameters);
     }
 
-    public function completePurchase(array $parameters = array())
+    public function completePurchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\Buckaroo\Message\CompletePurchaseRequest', $parameters);
     }

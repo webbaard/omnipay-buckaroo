@@ -12,7 +12,7 @@ class IdealGateway extends BuckarooGateway
         return 'Buckaroo iDeal';
     }
 
-    public function purchase(array $parameters = array())
+    public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\Buckaroo\Message\IdealPurchaseRequest', $parameters);
     }

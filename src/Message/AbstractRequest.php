@@ -89,7 +89,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         $this->validate('websiteKey', 'secretKey', 'amount', 'returnUrl');
 
-        $data = array();
+        $data = [];
         $data['Brq_websitekey'] = $this->getWebsiteKey();
         $data['Brq_amount'] = $this->getAmount();
         $data['Brq_currency'] = $this->getCurrency();

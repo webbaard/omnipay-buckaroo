@@ -12,7 +12,7 @@ class BancontactMrCashGateway extends CreditCardGateway
         return 'Buckaroo Bancontact MrCash';
     }
 
-    public function purchase(array $parameters = array())
+    public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\Buckaroo\Message\BancontactMrCashPurchaseRequest', $parameters);
     }

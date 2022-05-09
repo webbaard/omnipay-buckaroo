@@ -7,22 +7,22 @@ use Omnipay\Tests\TestCase;
 
 class AbstractRequestTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = m::mock('\Omnipay\Buckaroo\Message\AbstractRequest')->makePartial();
         $this->request->initialize(
-            array(
+            [
                 'websiteKey' => 'web',
                 'secretKey' => 'secret',
                 'amount' => '12.00',
                 'returnUrl' => 'https://www.example.com/return',
-            )
+            ]
         );
     }
 
     public function testGetData()
     {
-        $this->request->initialize(array(
+        $this->request->initialize([
             'websiteKey' => 'web',
             'secretKey' => 'secret',
             'amount' => '12.00',
@@ -34,7 +34,7 @@ class AbstractRequestTest extends TestCase
             'errorUrl' => 'https://www.example.com/error',
             'rejectUrl' => 'https://www.example.com/reject',
             'culture' => 'nl-NL',
-        ));
+        ]);
 
         $data = $this->request->getData();
 
@@ -52,11 +52,11 @@ class AbstractRequestTest extends TestCase
     public function testGenerateSignature()
     {
         $this->request->setSecretKey('secret');
-        $data = array(
+        $data = [
             'Brq_websitekey' => 'a',
             'Brq_amount' => 'b',
             'Brq_signature' => 'ignore',
-        );
+        ];
 
         $expected = sha1('Brq_amount=bBrq_websitekey=asecret');
         $this->assertSame($expected, $this->request->generateSignature($data));
@@ -65,11 +65,11 @@ class AbstractRequestTest extends TestCase
     public function testGenerateSignatureCaseInsensitivity()
     {
         $this->request->setSecretKey('secret');
-        $data = array(
+        $data = [
             'Brq_websitekey' => 'a',
             'Brq_amount' => 'b',
             'BrQ_SIgnatURE' => 'ignore',
-        );
+        ];
 
         $expected = sha1('Brq_amount=bBrq_websitekey=asecret');
         $this->assertSame($expected, $this->request->generateSignature($data));

@@ -12,7 +12,7 @@ class IdealProcessingGateway extends BuckarooGateway
         return 'Buckaroo iDeal Processing';
     }
 
-    public function purchase(array $parameters = array())
+    public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\Buckaroo\Message\IdealProcessingPurchaseRequest', $parameters);
     }

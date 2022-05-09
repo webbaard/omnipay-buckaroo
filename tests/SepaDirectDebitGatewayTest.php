@@ -7,20 +7,18 @@ use Omnipay\Tests\GatewayTestCase;
 
 class SepaDirectDebitGatewayTest extends GatewayTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
-        
+
         $this->gateway = new SepaDirectDebitGateway($this->getHttpClient(), $this->getHttpRequest());
     }
 
     public function testPurchase()
     {
-        $request = $this->gateway->purchase(array('amount' => '10.00'));
+        $request = $this->gateway->purchase(['amount' => '10.00']);
 
-        $this->assertInstanceOf('Omnipay\Buckaroo\Message\SepaDirectDebitPurchaseRequest', $request);
+        $this->assertInstanceOf(\Omnipay\Buckaroo\Message\SepaDirectDebitPurchaseRequest::class, $request);
         $this->assertSame('10.00', $request->getAmount());
     }
-
-
 }

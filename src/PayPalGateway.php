@@ -12,7 +12,7 @@ class PayPalGateway extends BuckarooGateway
         return 'Buckaroo PayPal';
     }
 
-    public function purchase(array $parameters = array())
+    public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\Buckaroo\Message\PayPalPurchaseRequest', $parameters);
     }

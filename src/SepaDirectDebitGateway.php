@@ -12,7 +12,7 @@ class SepaDirectDebitGateway extends BuckarooGateway
         return 'Buckaroo SepaDirectDebit';
     }
 
-    public function purchase(array $parameters = array())
+    public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\Buckaroo\Message\SepaDirectDebitPurchaseRequest', $parameters);
     }

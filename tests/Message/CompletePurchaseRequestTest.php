@@ -6,18 +6,18 @@ use Omnipay\Tests\TestCase;
 
 class CompletePurchaseRequestTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CompletePurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $this->request->initialize(array(
+        $this->request->initialize([
             'websiteKey' => 'web',
             'transactionId' => 13,
             'secretKey' => 'shhhh',
             'amount' => '12.00',
             'currency' => 'ZAR',
             'testMode' => true,
-        ));
-        $this->getHttpRequest()->request->replace(array());
+        ]);
+        $this->getHttpRequest()->request->replace([]);
     }
 
     public function testGetData()
@@ -36,24 +36,22 @@ class CompletePurchaseRequestTest extends TestCase
         $this->assertArrayHasKey('BRQ_SIGNATURE', $data);
     }
 
-    /**
-     * @expectedException Omnipay\Common\Exception\InvalidRequestException
-     * @expectedExceptionMessage Incorrect signature
-     */
     public function testGetDataInvalidSignature()
     {
+        $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
+        $this->expectExceptionMessage('Incorrect signature');
+
         $this->getHttpRequest()->request->set('Brq_signature', 'zzz');
 
         $this->request->getData();
     }
 
-    /**
-     * @expectedException Omnipay\Common\Exception\InvalidRequestException
-     * @expectedExceptionMessage Incorrect signature
-     */
     public function testGetDataMissingSignature()
     {
-        $this->getHttpRequest()->request->replace(array());
+        $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
+        $this->expectExceptionMessage('Incorrect signature');
+
+        $this->getHttpRequest()->request->replace([]);
 
         $this->request->getData();
     }

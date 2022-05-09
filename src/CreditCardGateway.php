@@ -24,7 +24,7 @@ class CreditCardGateway extends BuckarooGateway
         return $this->getParameter('paymentMethod');
     }
 
-    public function purchase(array $parameters = array())
+    public function purchase(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\Buckaroo\Message\CreditCardPurchaseRequest', $parameters);
     }

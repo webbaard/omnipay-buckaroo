@@ -11,7 +11,7 @@ class CreditCardPurchaseRequest extends AbstractRequest
     {
         $data = parent::getData();
 
-        $creditcardProviders = array('visa', 'mastercard', 'amex');
+        $creditcardProviders = ['visa', 'mastercard', 'amex'];
 
         if (in_array($this->getPaymentMethod(), $creditcardProviders)) {
             $data['Brq_payment_method'] = $this->getPaymentMethod();

@@ -7,29 +7,29 @@ use Omnipay\Tests\GatewayTestCase;
 
 class IdealProcessingGatewayTest extends GatewayTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
-        
+
         $this->gateway = new IdealProcessingGateway($this->getHttpClient(), $this->getHttpRequest());
     }
 
     public function testPurchase()
     {
-        $request = $this->gateway->purchase(array('amount' => '10.00'));
+        $request = $this->gateway->purchase(['amount' => '10.00']);
 
-        $this->assertInstanceOf('Omnipay\Buckaroo\Message\IdealProcessingPurchaseRequest', $request);
+        $this->assertInstanceOf(\Omnipay\Buckaroo\Message\IdealProcessingPurchaseRequest::class, $request);
         $this->assertSame('10.00', $request->getAmount());
     }
 
     public function testIdealIssuerChosen()
     {
         /** @var IdealProcessingPurchaseRequest $request */
-        $request = $this->gateway->purchase(array(
+        $request = $this->gateway->purchase([
             'amount' => '10.00',
             'returnUrl' => 'https://www.example.com/return',
-            'issuer' => 'TRIONL2U'
-        ));
+            'issuer' => 'TRIONL2U',
+        ]);
 
         $data = $request->getData();
 
@@ -39,10 +39,10 @@ class IdealProcessingGatewayTest extends GatewayTestCase
     public function testIdealIssuerIsNotRequired()
     {
         /** @var IdealProcessingPurchaseRequest $request */
-        $request = $this->gateway->purchase(array(
+        $request = $this->gateway->purchase([
             'amount' => '10.00',
             'returnUrl' => 'https://www.example.com/return',
-        ));
+        ]);
 
         $this->assertNotContains('Brq_service_idealprocessing_issuer', $request->getData());
     }

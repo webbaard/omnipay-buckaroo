@@ -6,22 +6,20 @@ use Omnipay\Tests\TestCase;
 
 class CreditCardPurchaseRequestTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new CreditCardPurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $this->request->initialize(
-            array(
-                'websiteKey' => 'web',
-                'secretKey' => 'secret',
-                'amount' => '12.00',
-                'returnUrl' => 'https://www.example.com/return',
-            )
-        );
+        $this->request->initialize([
+            'websiteKey' => 'web',
+            'secretKey' => 'secret',
+            'amount' => '12.00',
+            'returnUrl' => 'https://www.example.com/return',
+        ]);
     }
 
     public function testGetData()
     {
-        $this->request->initialize(array(
+        $this->request->initialize([
             'websiteKey' => 'web',
             'secretKey' => 'secret',
             'amount' => '12.00',
@@ -32,7 +30,7 @@ class CreditCardPurchaseRequestTest extends TestCase
             'cancelUrl' => 'https://www.example.com/cancel',
             'culture' => 'nl-NL',
             'paymentMethod' => 'mastercard'
-        ));
+        ]);
 
         $data = $this->request->getData();
 
@@ -47,7 +45,7 @@ class CreditCardPurchaseRequestTest extends TestCase
     }
     public function testGetDataPaymentMethodFallback()
     {
-        $this->request->initialize(array(
+        $this->request->initialize([
             'websiteKey' => 'web',
             'secretKey' => 'secret',
             'amount' => '12.00',
@@ -57,7 +55,7 @@ class CreditCardPurchaseRequestTest extends TestCase
             'returnUrl' => 'https://www.example.com/return',
             'cancelUrl' => 'https://www.example.com/cancel',
             'culture' => 'nl-NL',
-        ));
+        ]);
 
         $data = $this->request->getData();
 
