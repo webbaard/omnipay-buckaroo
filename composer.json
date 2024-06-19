@@ -1,5 +1,5 @@
 {
-    "name": "born05/omnipay-buckaroo",
+    "name": "webbaard/omnipay-buckaroo",
     "type": "library",
     "description": "Buckaroo driver for the Omnipay payment processing library",
     "keywords": [
@@ -14,12 +14,9 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Adrian Macneil",
-            "email": "adrian@adrianmacneil.com"
-        },
-        {
-            "name": "Mati Kochen",
-            "homepage": "https://github.com/kochen"
+            "name": "Tim Huijzers",
+            "email": "webbaard@gmail.com",
+            "homepage": "https://github.com/webbaard"
         },
         {
             "name": "Omnipay Contributors",
