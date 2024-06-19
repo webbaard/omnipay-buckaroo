@@ -96,6 +96,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $data['Brq_invoicenumber'] = $this->getTransactionId();
         $data['Brq_description'] = $this->getDescription();
         $data['Brq_return'] = $this->getReturnUrl();
+        $data['Brq_pushUrl'] = $this->getNotifyUrl();
         $data['Brq_returncancel'] = $this->getCancelUrl();
         $data['Brq_returnreject'] = $this->getRejectUrl();
         $data['Brq_returnerror'] = $this->getErrorUrl();
