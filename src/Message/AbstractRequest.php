@@ -100,8 +100,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $data['Brq_returnreject'] = $this->getRejectUrl();
         $data['Brq_returnerror'] = $this->getErrorUrl();
         $data['Brq_culture'] = $this->getCulture();
-        $data['Brq_pushURL'] = $this->getNotifyUrl();
-        $data['Brq_pushURLFailure'] = $this->getNotifyUrl();
+        $data['Brq_push'] = $this->getNotifyUrl();
+        $data['Brq_pushfailure'] = $this->getNotifyUrl();
 
         return $data;
     }
