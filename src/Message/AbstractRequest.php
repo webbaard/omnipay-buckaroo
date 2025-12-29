@@ -118,7 +118,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             $str .= $key.'='.urldecode($value);
         }
 
-        return sha1($str.$this->getSecretKey());
+        return strtolower(hash_hmac('sha256', $str . $this->getSecretKey(), $this->getSecretKey()));
     }
 
     public function sendData($data)
